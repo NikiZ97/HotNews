@@ -18,6 +18,8 @@ buildscript {
         archVersion = '2.1.0-alpha02'
         roomVersion = '2.1.0-alpha04'
         koinVersion = '2.0.0-beta-1'
+        timberVersion = '4.7.1'
+        gsonVersion = '2.8.5'
     }
 }
 
