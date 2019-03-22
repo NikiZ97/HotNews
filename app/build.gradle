@@ -20,6 +20,7 @@ android {
         }
         debug {
             buildConfigField "String", "API_KEY", "\"e4eec7e17cf44f01a128e4ecb1939b68\""
+            buildConfigField "String", "BASE_URL", "\"https://newsapi.org/v2/\""
         }
     }
 }
@@ -37,6 +38,15 @@ dependencies {
     implementation "org.koin:koin-android:$rootProject.koinVersion"
     implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.retrofitToCoroutinesAdapterVesrion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.converterGsonVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okHttpVersion"
+    implementation "com.chibatching.kotpref:kotpref:$rootProject.kotprefVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
