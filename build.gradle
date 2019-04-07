@@ -27,6 +27,7 @@ buildscript {
         gsonVersion = '2.8.5'
         okHttpVersion = '3.11.0'
         kotprefVersion = '2.5.0'
+        materialVersion = '1.0.0'
     }
 }
 
