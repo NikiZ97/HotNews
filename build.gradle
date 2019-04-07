@@ -28,6 +28,7 @@ buildscript {
         okHttpVersion = '3.11.0'
         kotprefVersion = '2.5.0'
         materialVersion = '1.0.0'
+        koinViewModelVersion = '2.0.0-beta-4'
     }
 }
 

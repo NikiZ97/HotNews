@@ -49,6 +49,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okHttpVersion"
     implementation "com.chibatching.kotpref:kotpref:$rootProject.kotprefVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$rootProject.koinViewModelVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
