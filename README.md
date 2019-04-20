@@ -4,4 +4,6 @@ Sample breaking news app written in Kotlin and using MVVM and Android Architectu
 1. MVVM with LiveData.
 2. Room as database.
 3. Koin for DI.
-This simple app written for my own educational purposes.
+4. Coroutines for async network requests.
+
+This sample app is written for my own educational purposes.
