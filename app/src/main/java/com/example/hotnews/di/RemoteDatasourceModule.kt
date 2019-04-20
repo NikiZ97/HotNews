@@ -12,8 +12,9 @@ import java.util.concurrent.TimeUnit
 
 val remoteDatasourceModule = module {
     single { createOkHttpClient() }
-    single { createWebService<ApiService>(get(), getProperty(BuildConfig.BASE_URL)) }
+    single { createWebService<ApiService>(get()) }
 }
+
 
 fun createOkHttpClient(): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -25,9 +26,9 @@ fun createOkHttpClient(): OkHttpClient {
         .build()
 }
 
-inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String): T {
+inline fun <reified T> createWebService(okHttpClient: OkHttpClient): T {
     val retrofit = Retrofit.Builder()
-        .baseUrl(url)
+        .baseUrl(BuildConfig.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory()).build()
