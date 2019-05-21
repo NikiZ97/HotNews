@@ -1,6 +1,5 @@
 package com.example.hotnews.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,8 +19,7 @@ class NewsViewModel(private val repository: NewsRepository,
         getBreakingNews()
     }
 
-    fun getBreakingNews() {
-        Log.d("TAG", "getBreakingNews()")
+    private fun getBreakingNews() {
         viewModelScope.launch {
             if (connectionManager.isNetworkNotAvailable()) {
                 showErrorById(R.string.no_internet_connection)
