@@ -1,6 +1,7 @@
 package com.example.hotnews
 
 import android.app.Application
+import com.example.hotnews.di.connectionManagerModule
 import com.example.hotnews.di.remoteDatasourceModule
 import com.example.hotnews.di.repositoryModule
 import com.example.hotnews.di.viewModelModule
@@ -13,7 +14,7 @@ class HotNewsApp : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@HotNewsApp)
-            modules(remoteDatasourceModule, repositoryModule, viewModelModule)
+            modules(remoteDatasourceModule, repositoryModule, viewModelModule, connectionManagerModule)
         }
     }
 }

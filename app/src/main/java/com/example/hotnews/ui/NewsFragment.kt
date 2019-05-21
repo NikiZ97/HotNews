@@ -30,12 +30,20 @@ class NewsFragment : BaseFragment() {
         return inflater.inflate(getResLayoutId(), container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        newsViewModel.getBreakingNews()
-        newsViewModel.news.observe(this, Observer {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        newsViewModel.news.observe(viewLifecycleOwner, Observer {
             updateNewsList(it.articles)
         })
+        newsViewModel.error.observe(viewLifecycleOwner, Observer {
+            showInternetConnectionError(it)
+        })
+    }
+
+    private fun showInternetConnectionError(stringId: Int) {
+        if (stringId == R.string.no_internet_connection) {
+            internetConnectionError.visibility = View.VISIBLE
+        }
     }
 
     private fun updateNewsList(articles: List<ArticleResponse>?) {

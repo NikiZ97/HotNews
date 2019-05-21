@@ -9,7 +9,9 @@ class NewsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
-        showNewsFragment()
+        if (savedInstanceState == null) {
+            showNewsFragment()
+        }
     }
 
     private fun showNewsFragment() {
