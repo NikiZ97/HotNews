@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hotnews.R
@@ -55,6 +57,7 @@ class NewsFragment : BaseFragment() {
 
             override fun getLayoutId(position: Int, obj: ArticleResponse) = R.layout.layout_news_item
         }
+        newsRecyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
     }
 
     private class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
