@@ -29,6 +29,7 @@ buildscript {
         kotprefVersion = '2.5.0'
         materialVersion = '1.0.0'
         koinViewModelVersion = '2.0.0-beta-4'
+        genericAdapterVersion = '1.0.1'
     }
 }
 

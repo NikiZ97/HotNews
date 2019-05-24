@@ -8,18 +8,18 @@ import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.hotnews.R
 import com.example.hotnews.api.response.ArticleResponse
 import com.example.hotnews.base.BaseFragment
-import com.example.hotnews.ui.adapters.GenericAdapter
+import com.example.hotnews.ui.adapters.NewsAdapter
+import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
 import kotlinx.android.synthetic.main.fragment_news.*
-import kotlinx.android.synthetic.main.layout_news_item.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NewsFragment : BaseFragment() {
+class NewsFragment : BaseFragment(), OnRecyclerItemClickListener {
 
     private val newsViewModel: NewsViewModel by viewModel()
+    private lateinit var newsAdapter: NewsAdapter
 
     companion object {
         @JvmStatic
@@ -29,6 +29,7 @@ class NewsFragment : BaseFragment() {
     override fun getResLayoutId() = R.layout.fragment_news
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        newsAdapter = NewsAdapter(context!!, this)
         return inflater.inflate(getResLayoutId(), container, false)
     }
 
@@ -42,6 +43,10 @@ class NewsFragment : BaseFragment() {
         })
     }
 
+    override fun onItemClick(position: Int) {
+        // TODO: need to open NewsDetailActivity and show article details
+    }
+
     private fun showInternetConnectionError(stringId: Int) {
         if (stringId == R.string.no_internet_connection) {
             internetConnectionError.visibility = View.VISIBLE
@@ -50,22 +55,8 @@ class NewsFragment : BaseFragment() {
 
     private fun updateNewsList(articles: List<ArticleResponse>?) {
         newsRecyclerView.layoutManager = LinearLayoutManager(context)
-        newsRecyclerView.adapter = object : GenericAdapter<ArticleResponse>(articles ?: listOf()) {
-            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return NewsViewHolder(view)
-            }
-
-            override fun getLayoutId(position: Int, obj: ArticleResponse) = R.layout.layout_news_item
-        }
+        newsAdapter.items = articles
+        newsRecyclerView.adapter = newsAdapter
         newsRecyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
     }
-
-    private class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        GenericAdapter.Binder<ArticleResponse> {
-
-        override fun bind(data: ArticleResponse) {
-            itemView.articleName.text = data.title
-        }
-    }
-
 }

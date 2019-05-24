@@ -50,6 +50,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okHttpVersion"
     implementation "com.chibatching.kotpref:kotpref:$rootProject.kotprefVersion"
     implementation "org.koin:koin-androidx-viewmodel:$rootProject.koinViewModelVersion"
+    implementation "com.leodroidcoder:generic-adapter:$rootProject.genericAdapterVersion"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-alpha-1'
 
