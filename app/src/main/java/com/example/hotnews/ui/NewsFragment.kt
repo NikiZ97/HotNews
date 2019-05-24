@@ -50,19 +50,42 @@ class NewsFragment : BaseFragment(), OnRecyclerItemClickListener {
         })
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        refreshLayout.setOnRefreshListener {
+            clearErrorMessage()
+            newsViewModel.getBreakingNews()
+        }
+    }
+
     override fun onItemClick(position: Int) {
         // TODO: need to open NewsDetailActivity and show article details
     }
 
+    private fun clearErrorMessage() {
+        error.text = ""
+    }
+
     private fun showError(errorMessage: String) {
+        newsAdapter.clear()
+        stopRefreshingLayout()
+        setErrorMessageToTextView(errorMessage)
+    }
+
+    private fun setErrorMessageToTextView(errorMessage: String) {
         error.visibility = View.VISIBLE
         error.text = errorMessage
     }
 
     private fun updateNewsList(articles: List<ArticleResponse>) {
+        stopRefreshingLayout()
         newsRecyclerView.layoutManager = LinearLayoutManager(context)
         newsRecyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
         newsAdapter.updateItems(articles)
         newsRecyclerView.adapter = newsAdapter
+    }
+
+    private fun stopRefreshingLayout() {
+        refreshLayout.isRefreshing = false
     }
 }

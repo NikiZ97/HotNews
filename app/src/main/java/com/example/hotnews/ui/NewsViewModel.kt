@@ -23,7 +23,7 @@ class NewsViewModel(private val repository: NewsRepository,
         getBreakingNews()
     }
 
-    private fun getBreakingNews() {
+    fun getBreakingNews() {
         viewModelScope.launch {
             if (connectionManager.isNetworkNotAvailable()) {
                 showError(application.getString(R.string.no_internet_connection))
