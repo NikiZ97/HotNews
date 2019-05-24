@@ -36,7 +36,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
-            android:id="@+id/internetConnectionError"
+            android:id="@+id/error"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
@@ -45,5 +45,11 @@
             android:textSize="20sp"
             android:textColor="@android:color/holo_red_light"
             android:text="@string/no_internet_connection"/>
+
+    <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
 
 </RelativeLayout>

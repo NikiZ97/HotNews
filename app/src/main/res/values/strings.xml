@@ -5,4 +5,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="prompt_toolbar_title">Breaking news</string>
     <string name="no_internet_connection">Нет соединения с Интернетом. Проверьте настройки соединения и повторите попытку позже.</string>
+    <string name="error_while_loading_news">Произошла ошибка при загрузке новостей</string>
 </resources>

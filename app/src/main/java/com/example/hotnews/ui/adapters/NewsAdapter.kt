@@ -18,6 +18,11 @@ class NewsAdapter(context: Context, private val listener: OnRecyclerItemClickLis
         return NewsViewHolder(inflate(R.layout.layout_news_item, parent), listener)
     }
 
+    override fun updateItems(articles: List<ArticleResponse>) {
+        val diffUtilCallback = NewsDiffUtilCallback(items, articles)
+        super.updateItems(articles, diffUtilCallback)
+    }
+
     class NewsViewHolder(itemView: View, listener: OnRecyclerItemClickListener):
         BaseViewHolder<ArticleResponse, OnRecyclerItemClickListener>(itemView, listener) {
 

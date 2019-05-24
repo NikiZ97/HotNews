@@ -39,7 +39,14 @@ class NewsFragment : BaseFragment(), OnRecyclerItemClickListener {
             updateNewsList(it.articles)
         })
         newsViewModel.error.observe(viewLifecycleOwner, Observer {
-            showInternetConnectionError(it)
+            showError(it)
+        })
+        newsViewModel.progressState.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.GONE
+            }
         })
     }
 
@@ -47,16 +54,15 @@ class NewsFragment : BaseFragment(), OnRecyclerItemClickListener {
         // TODO: need to open NewsDetailActivity and show article details
     }
 
-    private fun showInternetConnectionError(stringId: Int) {
-        if (stringId == R.string.no_internet_connection) {
-            internetConnectionError.visibility = View.VISIBLE
-        }
+    private fun showError(errorMessage: String) {
+        error.visibility = View.VISIBLE
+        error.text = errorMessage
     }
 
-    private fun updateNewsList(articles: List<ArticleResponse>?) {
+    private fun updateNewsList(articles: List<ArticleResponse>) {
         newsRecyclerView.layoutManager = LinearLayoutManager(context)
-        newsAdapter.items = articles
-        newsRecyclerView.adapter = newsAdapter
         newsRecyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
+        newsAdapter.updateItems(articles)
+        newsRecyclerView.adapter = newsAdapter
     }
 }

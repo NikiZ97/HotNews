@@ -2,10 +2,9 @@ package com.example.hotnews.api.response
 
 import com.google.gson.annotations.SerializedName
 
-class SourceResponse {
+class SourceResponse(
     @SerializedName("id")
-    var id: String? = null
-
+    var id: String,
     @SerializedName("name")
     var name: String? = null
-}
+)

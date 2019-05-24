@@ -3,29 +3,19 @@ package com.example.hotnews.api.response
 import com.google.gson.annotations.SerializedName
 
 
-class ArticleResponse {
+class ArticleResponse(
     @SerializedName("source")
-    var source: SourceResponse? = null
-
+    var source: SourceResponse?,
     @SerializedName("author")
-    var author: String? = null
-
+    var author: String,
     @SerializedName("title")
-    var title: String? = null
-
+    var title: String,
     @SerializedName("description")
-    var description: String? = null
-
+    var description: String,
     @SerializedName("url")
-    var url: String? = null
-
+    var url: String,
     @SerializedName("urlToImage")
-    var urlToImage: String? = null
-
+    var urlToImage: String,
     @SerializedName("publishedAt")
-    var publishedAt: String? = null
-
-    @SerializedName("content")
-    var content: String? = null
-
-}
+    var publishedAt: String
+)
